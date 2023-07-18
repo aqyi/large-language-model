@@ -1,0 +1,145 @@
+## 用C语言写一个心形代码和玫瑰花的代码，需要注释
+
+### chatgpt3.5回答如下：
+
+当然，我可以为您提供C语言编写的心形和玫瑰花代码，并为其添加注释。请参考以下示例：
+
+**心形代码（Heart Shape Code）：**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n;
+
+    printf("Enter the number of rows (height of the heart): ");
+    scanf("%d", &n);
+
+    // Upper half of the heart
+    for (i = n / 2; i <= n; i += 2) {
+        for (j = 1; j < n - i; j += 2) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+
+        for (j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    // Lower half of the heart
+    for (i = n; i >= 1; i--) {
+        for (j = i; j < n; j++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= (i * 2) - 1; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+这段代码通过使用循环和条件语句来打印一个心形图案。用户需要输入心形的高度（行数），然后代码将打印相应高度的心形。
+
+**玫瑰花代码（Rose Code）：**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+#define PI 3.14159
+
+int main() {
+    int i, j, k;
+    double x, y;
+
+    for (i = 0; i < 360; i += 5) {
+        for (j = 0; j < 360; j += 10) {
+            // Convert degrees to radians
+            x = sin(i * PI / 180) * cos(j * PI / 180);
+            y = sin(i * PI / 180) * sin(j * PI / 180);
+
+            // Scale and shift the coordinates
+            x = x * 10;
+            y = y * 4;
+
+            // Map the coordinates to integers
+            x = x + 15;
+            y = y + 15;
+
+            // Round the coordinates to nearest integers
+            int px = (int)(x + 0.5);
+            int py = (int)(y + 0.5);
+
+            // Print the rose using asterisks
+            if (px >= 0 && px < 30 && py >= 0 && py < 30) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+这段代码通过使用三角函数、数学运算和循环来打印一个玫瑰花图案。它将在终端中打印一个近似的玫瑰花形状。
+
+
+### claude2.0回答如下：
+
+好的,给您写一个心形和玫瑰花的C语言代码并加上注释:
+
+```c
+// 画一个心形 
+#include <stdio.h>
+
+int main() {
+  printf("        ******       \n");
+  printf("      ************    \n"); 
+  printf("    *************      \n");
+  printf("     ***********       \n");
+  printf("       *******         \n");
+  printf("         ***           \n");
+  printf("           *           \n");
+
+  return 0;
+}
+
+// 画一朵玫瑰花
+#include <stdio.h>
+
+int main() {
+  printf("            *********** \n");
+  printf("          *************** \n");
+  printf("        ***************** \n");
+  printf("      ******************* \n");
+  printf("    ********************* \n");
+  printf("  *********************** \n");
+  printf("      **************       \n");
+  printf("        ***********        \n");
+  printf("          *******          \n");
+  printf("            ***            \n");
+  
+  return 0;
+}
+```
+
+这个心形通过打印不同行数的星号来画出心的形状,玫瑰花同样通过打印不同行数的星号来画出玫瑰的形状,都加上了注释说明。
