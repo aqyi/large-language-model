@@ -1,0 +1,105 @@
+## 用Objective-C开发一个ios的桌面时钟应用，需要给出必要的代码
+
+### chatgpt3.5回答如下：
+
+当你使用Objective-C开发iOS应用时，你可以按照以下步骤创建一个简单的桌面时钟应用。
+
+1. 创建一个新的Xcode项目：
+* 打开Xcode。
+* 选择“Create a new Xcode project”（创建新的Xcode项目）。
+* 选择“App”（应用）模板，并点击“Next”（下一步）。
+* 输入你的项目名称和组织标识符，并选择存储位置，然后点击“Next”（下一步）。
+* 选择“Objective-C”作为你的语言，并确保“Use Storyboards”（使用Storyboards）和“Use Automatic Reference Counting”（使用自动引用计数）选中，然后点击“Next”（下一步）。
+* 选择你想要保存项目的位置，并点击“Create”（创建）。
+
+2. 创建界面：
+* 打开Main.storyboard文件。
+* 从Object Library（对象库）中拖拽一个Label（标签）控件到视图控制器的视图中心。
+* 调整Label（标签）控件的大小和样式，使其适应屏幕并显示时间。
+
+3. 创建视图控制器类：
+* 在项目导航器中，选择ViewController.m文件。
+* 在文件中添加以下代码来更新标签控件的时间：
+
+```Objective-C
+#import "ViewController.h"
+
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *clockLabel;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self updateClockLabel];
+    [NSTimer scheduledTimerWithTimeInterval:1.0
+                                     target:self
+                                   selector:@selector(updateClockLabel)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (void)updateClockLabel {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSString *currentTime = [formatter stringFromDate:[NSDate date]];
+    self.clockLabel.text = currentTime;
+}
+
+@end
+
+```
+
+4. 运行应用：
+* 选择你想要运行应用的模拟器或真机设备。
+* 点击Xcode顶部工具栏上的“Run”（运行）按钮，或使用快捷键`Command + R`。
+* 应用程序将在模拟器或真机设备上运行，并显示当前的时间。
+以上是一个简单的iOS桌面时钟应用的代码示例。你可以根据自己的需求进行进一步的定制和美化。
+
+
+### claude2.0回答如下：
+
+这里是使用Objective-C开发一个简单的iOS桌面时钟应用的代码示例:
+
+```objectivec
+//
+//  ViewController.m
+//  Clock
+//
+//  Created by Anthropic on 7/18/23.
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  // 设置时钟定时器,每秒更新一次
+  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTime) userInfo:nil repeats:YES]; 
+}
+
+- (void)updateTime {
+  // 获取当前时间
+  NSDate *currentTime = [NSDate date];
+  NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+  [timeFormatter setDateFormat:@"hh:mm:ss a"];
+  
+  // 更新标签显示当前时间
+  self.timeLabel.text = [timeFormatter stringFromDate:currentTime]; 
+}
+
+@end
+```
+
+在Storyboard中添加一个UILabel,设置为timeLabel,用来显示时间。然后在ViewController中用一个NSTimer定时器每秒更新一次当前时间,并设置UILabel显示。
+
+这是一个简单的实现桌面时钟的方法。你可能还需要自定义时钟的样式、添加日期显示等等。但基本的时间获取和显示就是这样。
